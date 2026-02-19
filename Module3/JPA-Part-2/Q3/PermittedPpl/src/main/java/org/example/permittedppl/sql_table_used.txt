@@ -1,0 +1,51 @@
+USED FOR SINGLE TABLE inheritance
+
+CREATE TABLE permitted_person (
+    aadhaar_number VARCHAR(20) NOT NULL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    age INT,
+    person_type VARCHAR(20),
+    performance_type VARCHAR(50),
+    performance_fee DECIMAL(10,2),
+    seat_number VARCHAR(10)
+);
+
+
+
+TABLES USED FOR JOINED inheritance
+
+
+CREATE TABLE joined_person (
+    aadhaar VARCHAR(20) PRIMARY KEY,
+    name VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE performer_joined (
+    aadhaar VARCHAR(20) PRIMARY KEY,
+    skill VARCHAR(50),
+    FOREIGN KEY (aadhaar) REFERENCES joined_person(aadhaar)
+);
+
+CREATE TABLE audience_joined (
+    aadhaar VARCHAR(20) PRIMARY KEY,
+    ticket_number VARCHAR(50),
+    FOREIGN KEY (aadhaar) REFERENCES joined_person(aadhaar)
+);
+
+
+
+TABLES USED FOR Table per class inheritance
+
+
+
+CREATE TABLE performer_tpc (
+    aadhaar VARCHAR(20) PRIMARY KEY,
+    name VARCHAR(50) NOT NULL,
+    skill VARCHAR(50)
+);
+
+CREATE TABLE audience_tpc (
+    aadhaar VARCHAR(20) PRIMARY KEY,
+    name VARCHAR(50) NOT NULL,
+    ticket_number VARCHAR(50)
+);
