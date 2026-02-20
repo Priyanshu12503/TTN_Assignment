@@ -1,0 +1,21 @@
+CREATE TABLE author (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    adderess_street_number INT,
+    adderess_location VARCHAR(255),
+    adderess_state VARCHAR(255),
+    book_id BIGINT,
+    CONSTRAINT fk_author_book FOREIGN KEY (book_id) REFERENCES book(id)
+);
+
+
+CREATE TABLE book (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    book_name VARCHAR(255)
+);
+
+
+CREATE TABLE author_subjects (
+    author_id BIGINT NOT NULL,
+    subjects VARCHAR(255),
+    CONSTRAINT fk_author_subject FOREIGN KEY (author_id) REFERENCES author(id)
+);

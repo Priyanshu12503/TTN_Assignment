@@ -1,0 +1,33 @@
+UNIDIRECTIONAL
+
+CREATE TABLE author (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255)
+);
+
+CREATE TABLE book (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(255)
+);
+
+CREATE TABLE author_books (
+    author_id BIGINT NOT NULL,
+    books_id BIGINT NOT NULL,
+    CONSTRAINT fk_author_books_author FOREIGN KEY (author_id) REFERENCES author(id),
+    CONSTRAINT fk_author_books_book FOREIGN KEY (books_id) REFERENCES book(id)
+);
+
+
+BIDIRECTIONAL
+
+CREATE TABLE biauthor (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255)
+);
+
+CREATE TABLE bibook (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(255),
+    author_id BIGINT,
+    CONSTRAINT fk_bibook_author FOREIGN KEY (author_id) REFERENCES biauthor(id)
+);
