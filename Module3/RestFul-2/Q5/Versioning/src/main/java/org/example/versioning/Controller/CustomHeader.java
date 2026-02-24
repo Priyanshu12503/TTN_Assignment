@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/header")
 public class CustomHeader {
 
-    @GetMapping(value = "/details", headers = "X-API-VERSION=1")
+    @GetMapping(value = "/details", headers = "next-api=1")
     public BasicUser getUserV1() {
         return new BasicUser(1, "Priyanshu");
     }
